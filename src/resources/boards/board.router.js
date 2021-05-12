@@ -23,7 +23,7 @@ router.route('/:id').get(async (req, res) => {
 router.route('/').post(async (req, res) => {
   const board = new Board(req.body);
   boardsService.postBoard(board);
-  res.json(Board.toResponse(board));
+  res.status(201).json(Board.toResponse(board));
 });
 
 router.route('/:id').put(async (req, res) => {
