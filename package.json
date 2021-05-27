@@ -8,12 +8,15 @@
   "type": "commonjs",
   "description": "REST service starter for RS School",
   "main": "src/server.js",
+  "bin": {
+    "jsdoc": "./node_modules/.bin/jsdoc"
+  },
   "scripts": {
     "start": "nodemon src/server.js",
     "lint": "eslint --ext .js,.ts --fix src/",
     "test": "cross-env DEBUG=rs:* jest --testMatch \"<rootDir>/test/e2e/test/*.test.js\" --noStackTrace --runInBand",
     "test:auth": "cross-env DEBUG=rs:* TEST_MODE=auth jest --noStackTrace",
-    "doc": "./node_modules/.bin/jsdoc"
+    "doc": "jsdoc src/*.js"
   },
   "keywords": [
     "rs",
