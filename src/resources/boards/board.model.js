@@ -1,6 +1,13 @@
 const { v4: uuidv4 } = require('uuid');
-
+/**
+ * Board data model
+ * @class
+ */
 class Board {
+  /**
+   * @constructor
+   * @param {(id,title,columns)}
+   */
   constructor({ id = uuidv4(), title = 'BOARD', columns = 'user' } = {}) {
     this.id = id;
     this.title = title;
