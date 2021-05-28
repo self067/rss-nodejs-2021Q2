@@ -11,46 +11,50 @@ const tasksRepo = require('./task.memory.repository');
 /**
  * Get all tasks by BoardID
  * @memberof Tasks/Service
- * @param {BoardId} Board ID
+ * @param {string} boardId Board ID
  * @return {Task[]}
  */
 const getAll = (boardId) => tasksRepo.getAll(boardId);
 /**
- * Get task by BoardID
+ * Get task by Id
  * @memberof Tasks/Service
- * @param {Id} Task ID
- * @param {BoardId} Board ID
+ * @param {string} id Task ID
+ * @param {string} boardId Board ID
  */
 const getTaskById = (id, boardId) => tasksRepo.getTaskById(id, boardId);
 /**
- * Get all tasks by BoardID
+ * Create new Task
  * @memberof Tasks/Service
- * @param {BoardId} Board ID
+ * @param {string} boardId Board ID
+ * @param {object} task Task object
+ * @returns {object} task
  */
 const postTask = (boardId, task) => tasksRepo.postTask(boardId, task);
 /**
- * Get all tasks by BoardID
+ * Update task
  * @memberof Tasks/Service
- * @param {BoardId} Board ID
+ * @param {object} task Task object
+ * @returns {object} task
  */
 const putTask = (task) => tasksRepo.putTask(task);
 /**
- * Get all tasks by BoardID
+ * Delete task by BoardID
  * @memberof Tasks/Service
- * @param {BoardId} Board ID
+ * @param {string} id Task ID
+ * @param {string} boardId Board ID
  */
 const deleteTask = (id, boardId) => tasksRepo.deleteTask(id, boardId);
 /**
  * Delete tasks by Board Id
  * @memberof Tasks/Service
- * @param {BoardId} Board ID
+ * @param {string} boardId Board ID
  */
 const deleteTasksByBoardId = (boardId) =>
   tasksRepo.deleteTasksByBoardId(boardId);
 /**
- * Get all tasks by BoardID
+ * Clear UserId
  * @memberof Tasks/Service
- * @param {BoardId} Board ID
+ * @param {string} id Task ID
  */
 const clearUserId = (id) => tasksRepo.clearUserId(id);
 
