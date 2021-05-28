@@ -1,7 +1,6 @@
 /**
  * Boards data
  * @namespace Boards/Repository
-
  */
 
 /**

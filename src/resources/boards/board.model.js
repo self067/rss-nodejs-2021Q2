@@ -6,7 +6,9 @@ const { v4: uuidv4 } = require('uuid');
 class Board {
   /**
    * @constructor
-   * @param {(id,title,columns)}
+   * @param  {string} id Board Id
+   * @param  {string} title Board title
+   * @param  {string} columns Columns
    */
   constructor({ id = uuidv4(), title = 'BOARD', columns = 'user' } = {}) {
     this.id = id;
@@ -14,6 +16,11 @@ class Board {
     this.columns = columns;
   }
 
+  /**
+   * Board to response
+   * @param  {object} board
+   * @return {object}
+   */
   static toResponse(board) {
     const { id, title, columns } = board;
     return { id, title, columns };

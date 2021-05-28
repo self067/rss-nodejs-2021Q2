@@ -33,7 +33,7 @@ const postBoard = (board) => boardsRepo.postBoard(board);
 /**
  * Update board
  * @memberof Boards/Service
- * @param {Board} updated board
+ * @param {Board} board updated board
  * @returns {Board}
  */
 const putBoard = (board) => boardsRepo.putBoard(board);
