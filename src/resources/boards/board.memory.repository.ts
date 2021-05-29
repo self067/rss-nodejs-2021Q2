@@ -1,3 +1,4 @@
+import { IBoard } from '../../types.d.ts';
 /**
  * Boards data
  * @namespace Boards/Repository
@@ -7,13 +8,13 @@
  * Boards array
  * @memberof Boards/Repository
  */
-const boards = [];
+const boards: IBoard[] | [] = [];
 /**
  * Get all boards
  * @memberof Boards/Repository
  * @returns {Board[]} Returns all boards
  */
-const getAll = async () => boards;
+const getAll: TBoard[] = async () => boards;
 /**
  * Get the Board by ID
  * @memberof Boards/Repository

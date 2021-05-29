@@ -1,6 +1,9 @@
-const router = require('express').Router();
-const Task = require('./task.model');
-const tasksService = require('./task.service');
+import { Router } from 'express';
+import Task from './task.model.ts';
+
+import tasksService from './task.service.ts';
+
+const router = Router();
 
 router.route('/').get(async (req, res) => {
   const r = req.baseUrl.match(/\/?boards\/(.*)\/tasks/);

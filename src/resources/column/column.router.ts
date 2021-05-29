@@ -1,6 +1,8 @@
-const router = require('express').Router();
-const Column = require('./column.model');
-const columnsService = require('./column.service');
+import { Router } from 'express';
+import Column from './column.model.ts';
+import columnsService from './column.service.ts';
+
+const router = Router();
 
 router.route('/').get(async (req, res) => {
   const columns = await columnsService.getAll();
@@ -12,7 +14,7 @@ router.route('/:id').get(async (req, res) => {
   const column = await columnsService.getColumnById(id);
   if (!column) {
     res.status(404).json({
-      message: `Column ${id} not found`
+      message: `Column ${id} not found`,
     });
   } else {
     res.json(Column.toResponse(column));
@@ -31,7 +33,7 @@ router.route('/:id').put(async (req, res) => {
   column = await columnsService.putColumn(column);
   if (!column) {
     res.status(400).json({
-      message: 'Bad request'
+      message: 'Bad request',
     });
   } else {
     res.json(Column.toResponse(column));
@@ -43,11 +45,11 @@ router.route('/:id').delete(async (req, res) => {
   const column = await columnsService.deleteColumn(id);
   if (!column) {
     res.status(404).json({
-      message: `Column ${id} not found`
+      message: `Column ${id} not found`,
     });
   } else {
     res.status(204).json({
-      message: 'The column has been deleted'
+      message: 'The column has been deleted',
     });
   }
 });

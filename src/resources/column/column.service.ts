@@ -7,7 +7,7 @@
  * Columns data repository
  * @memberof Columns/Service
  */
-const columnsRepo = require('./column.memory.repository');
+import columnsRepo from './column.memory.repository.ts';
 
 /**
  * Get all columns
@@ -47,10 +47,4 @@ const putColumn = (column) => columnsRepo.putColumn(column);
  */
 const deleteColumn = (id) => columnsRepo.deleteColumn(id);
 
-module.exports = {
-  getAll,
-  getColumnById,
-  postColumn,
-  putColumn,
-  deleteColumn,
-};
+export { getAll, getColumnById, postColumn, putColumn, deleteColumn };

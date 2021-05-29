@@ -7,14 +7,14 @@
  * Boards repository
  * @memberof Boards/Service
  */
-const boardsRepo = require('./board.memory.repository');
+import boardsRepo from './board.memory.repository.ts';
 /**
  * Get all boards
  * @memberof Boards/Service
  * @returns {Board[]} Returns all boards
  *
  */
-const getAll = () => boardsRepo.getAll();
+const getAll = (): Board[] => boardsRepo.getAll();
 /**
  * Get the Board by ID
  * @memberof Boards/Service
@@ -45,4 +45,4 @@ const putBoard = (board) => boardsRepo.putBoard(board);
  */
 const deleteBoard = (id) => boardsRepo.deleteBoard(id);
 
-module.exports = { getAll, getBoardById, postBoard, putBoard, deleteBoard };
+export { getAll, getBoardById, postBoard, putBoard, deleteBoard };

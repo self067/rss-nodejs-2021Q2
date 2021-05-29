@@ -7,7 +7,7 @@
  * Tasks data repository
  * @memberof Tasks/Service
  */
-const tasksRepo = require('./task.memory.repository');
+import tasksRepo from './task.memory.repository.ts';
 /**
  * Get all tasks by BoardID
  * @memberof Tasks/Service
@@ -58,7 +58,7 @@ const deleteTasksByBoardId = (boardId) =>
  */
 const clearUserId = (id) => tasksRepo.clearUserId(id);
 
-module.exports = {
+export {
   getAll,
   getTaskById,
   postTask,

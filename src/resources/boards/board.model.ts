@@ -1,9 +1,11 @@
-const { v4: uuidv4 } = require('uuid');
+import { v4 as uuidv4 } from 'uuid';
+import { IBoard } from '../../types.d.ts';
+
 /**
  * Board data model
  * @class
  */
-class Board {
+export default class Board {
   /**
    * @constructor
    * @param  {string} id Board Id
@@ -26,5 +28,3 @@ class Board {
     return { id, title, columns };
   }
 }
-
-module.exports = Board;

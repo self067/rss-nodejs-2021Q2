@@ -7,7 +7,7 @@
  * Users data repository
  * @memberof Users/Service
  */
-const usersRepo = require('./user.memory.repository');
+import usersRepo from './user.memory.repository.ts';
 /**
  * Get all Users
  * @memberof Users/Service
@@ -43,4 +43,4 @@ const putUser = (user) => usersRepo.putUser(user);
  */
 const deleteUser = (id) => usersRepo.deleteUser(id);
 
-module.exports = { getAll, getUserById, postUser, deleteUser, putUser };
+export { getAll, getUserById, postUser, deleteUser, putUser };
