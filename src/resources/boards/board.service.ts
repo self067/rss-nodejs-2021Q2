@@ -7,42 +7,53 @@
  * Boards repository
  * @memberof Boards/Service
  */
-import boardsRepo from './board.memory.repository.ts';
+// Import { Board } from 'types';
+import boardsRepo from "./board.memory.repository";
+import Board from "./board.model";
+
 /**
  * Get all boards
  * @memberof Boards/Service
  * @returns {Board[]} Returns all boards
  *
  */
-const getAll = (): Board[] => boardsRepo.getAll();
+const getAll = (): Board[] => boardsRepo.getAll(),
+
 /**
  * Get the Board by ID
  * @memberof Boards/Service
- * @param {uuid} BoardId
+ * @param {string} id BoardId
  * @returns {Board}
  *
  */
-const getBoardById = (id) => boardsRepo.getBoardById(id);
+    getBoardById = (id: string): Board | undefined => boardsRepo.getBoardById(id),
+
 /**
  * Creates a new board
  * @memberof Boards/Service
- * @param {Board} new board
+ * @param {Board} board  new board
  * @returns {Board}
  */
-const postBoard = (board) => boardsRepo.postBoard(board);
+    postBoard = (board: Board): Board => boardsRepo.postBoard(board),
+
 /**
  * Update board
  * @memberof Boards/Service
  * @param {Board} board updated board
  * @returns {Board}
  */
-const putBoard = (board) => boardsRepo.putBoard(board);
+    putBoard = (board: Board): Board | null => boardsRepo.putBoard(board),
+
 /**
  * Delete board
  * @memberof Boards/Service
- * @param {BoardId} Board Id
+ * @param {string} id Board Id
  * @return {boolean}
  */
-const deleteBoard = (id) => boardsRepo.deleteBoard(id);
+    deleteBoard = (id: string): boolean => boardsRepo.deleteBoard(id);
 
-export { getAll, getBoardById, postBoard, putBoard, deleteBoard };
+export default {getAll,
+    getBoardById,
+    postBoard,
+    putBoard,
+    deleteBoard};

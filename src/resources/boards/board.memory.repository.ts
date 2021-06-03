@@ -1,67 +1,99 @@
-import { IBoard } from '../../types.d.ts';
 /**
  * Boards data
  * @namespace Boards/Repository
  */
+import Board from "./board.model";
 
 /**
  * Boards array
  * @memberof Boards/Repository
  */
-const boards: IBoard[] | [] = [];
+const boards: Board[] = [],
+
 /**
  * Get all boards
  * @memberof Boards/Repository
  * @returns {Board[]} Returns all boards
  */
-const getAll: TBoard[] = async () => boards;
+    getAll = (): Board[] => boards,
+
 /**
  * Get the Board by ID
  * @memberof Boards/Repository
- * @param {uuid} BoardId
+ * @param {string} id BoardId
  * @returns {Board} Board object
  *
  */
-const getBoardById = async (id) => boards.find((item) => item.id === id);
+    getBoardById = (id: string): Board | undefined => boards.find((item) => item.id === id),
+
 /**
  * Creates a new board
  * @memberof Boards/Repository
- * @param {Board} new board
+ * @param {Board} board new board
  * @returns {Board}
  */
 
-const postBoard = async ({ id, title, columns }) => {
-  boards.push({ id, title, columns });
-  return { id, title, columns };
-};
+    postBoard = ({id, title, columns}: Board): Board => {
+
+        boards.push({id,
+            title,
+            columns});
+
+        return {id,
+            title,
+            columns};
+
+    },
+
 /**
  * Delete board
  * @memberof Boards/Repository
- * @param {BoardId} Board Id
+ * @param {string} id Board Id
  * @return {boolean}
  */
+    deleteBoard = (id: string): boolean => {
 
-const deleteBoard = async (id) => {
-  const index = boards.findIndex((item) => item.id === id);
-  if (index === -1) return false;
-  boards.splice(index, 1);
+        const index = boards.findIndex((item) => item.id === id);
 
-  return true;
-};
+        if (index === -1) {
+
+            return false;
+
+        }
+        boards.splice(
+index,
+1
+);
+
+        return true;
+
+    },
+
 /**
  * Update board
  * @memberof Boards/Repository
  * @param {Board} updated board
  * @returns {Board}
  */
+    putBoard = ({id, title, columns}: Board): Board | null => {
 
-const putBoard = async ({ id, title, columns }) => {
-  const index = boards.findIndex((item) => item.id === id);
+        const index = boards.findIndex((item) => item.id === id),
+            board = boards[index];
 
-  if (index === -1) return null;
-  boards[index].title = title;
-  boards[index].columns = columns;
-  return { ...boards[index] };
-};
+        if (index === -1 || !board) {
 
-module.exports = { getAll, getBoardById, postBoard, deleteBoard, putBoard };
+            return null;
+
+        }
+        board.title = title;
+        board.columns = columns;
+
+        return {...board};
+
+    };
+
+export default {getAll,
+    getBoardById,
+    postBoard,
+    deleteBoard,
+    putBoard};

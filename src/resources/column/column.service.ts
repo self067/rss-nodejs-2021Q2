@@ -7,7 +7,8 @@
  * Columns data repository
  * @memberof Columns/Service
  */
-import columnsRepo from './column.memory.repository.ts';
+import columnsRepo from "./column.memory.repository";
+import Column from "./column.model";
 
 /**
  * Get all columns
@@ -15,36 +16,42 @@ import columnsRepo from './column.memory.repository.ts';
  * @returns {Column[]} Returns all columns
  *
  */
-const getAll = () => columnsRepo.getAll();
+const getAll = (): Column[] => columnsRepo.getAll(),
+
 /**
  * Get column by ID
  * @memberof Columns/Service
- * @param {Id} id Column ID
+ * @param {string} id Column ID
  * @returns {Column}
  */
-const getColumnById = (id) => columnsRepo.getColumnById(id);
+    getColumnById = (id: string): Column | undefined => columnsRepo.getColumnById(id),
+
 /**
  * Create column
  * @memberof Columns/Service
- * @param {object} column New Column
+ * @param {Column} column New Column
  * @returns {Column}
  */
-const postColumn = (column) => columnsRepo.postColumn(column);
+    postColumn = (column: Column): Column => columnsRepo.postColumn(column),
 
 /**
  * Update column
  * @memberof Columns/Service
- * @param {object} column Column object
+ * @param {Column} column Column object
  * @returns {Column}
  */
-const putColumn = (column) => columnsRepo.putColumn(column);
+    putColumn = (column: Column): Column | null => columnsRepo.putColumn(column),
 
 /**
  * Delete column
  * @memberof Columns/Service
- * @param {Id} id Column ID
+ * @param {string} id Column ID
  * @returns {boolean}
  */
-const deleteColumn = (id) => columnsRepo.deleteColumn(id);
+    deleteColumn = (id: string): boolean => columnsRepo.deleteColumn(id);
 
-export { getAll, getColumnById, postColumn, putColumn, deleteColumn };
+export default {getAll,
+    getColumnById,
+    postColumn,
+    putColumn,
+    deleteColumn};

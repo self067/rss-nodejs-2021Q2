@@ -1,11 +1,16 @@
 import { v4 as uuidv4 } from 'uuid';
-import { IBoard } from '../../types.d.ts';
 
 /**
  * Board data model
  * @class
  */
 export default class Board {
+  id: string;
+
+  title: string;
+
+  columns: string;
+
   /**
    * @constructor
    * @param  {string} id Board Id
@@ -20,11 +25,12 @@ export default class Board {
 
   /**
    * Board to response
-   * @param  {object} board
-   * @return {object}
+   * @param  {Board} board
+   * @return {Board}
    */
-  static toResponse(board) {
+  static toResponse(board: Board): Board {
     const { id, title, columns } = board;
+
     return { id, title, columns };
   }
 }

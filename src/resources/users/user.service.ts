@@ -7,40 +7,50 @@
  * Users data repository
  * @memberof Users/Service
  */
-import usersRepo from './user.memory.repository.ts';
+import usersRepo from "./user.memory.repository";
+import User from "./user.model";
+
 /**
  * Get all Users
  * @memberof Users/Service
- * @return {user[]}
+ * @return {User[]}
  */
-const getAll = () => usersRepo.getAll();
+const getAll = (): User[] => usersRepo.getAll(),
+
 /**
  * Get User by Id
  * @memberof Users/Service
  * @param  {string} id User id
- * @returns {User}
+ * @returns {User|undefined}
  */
-const getUserById = (id) => usersRepo.getUserById(id);
+    getUserById = (id: string): User | undefined => usersRepo.getUserById(id),
+
 /**
  * Create user
  * @memberof Users/Service
  * @param  {User} user  User object {name,login, password}
  * @returns {User}
  */
-const postUser = (user) => usersRepo.postUser(user);
+    postUser = (user: User): User => usersRepo.postUser(user),
+
 /**
  * Update user
  * @memberof User/Service
  * @param {User} user board
  * @returns {User}
  */
-const putUser = (user) => usersRepo.putUser(user);
+    putUser = (user: User): User | null => usersRepo.putUser(user),
+
 /**
  * Delete user
  * @memberof User/Service
  * @param {string} id User Id
  * @return {boolean}
  */
-const deleteUser = (id) => usersRepo.deleteUser(id);
+    deleteUser = (id: string): boolean => usersRepo.deleteUser(id);
 
-export { getAll, getUserById, postUser, deleteUser, putUser };
+export default {getAll,
+    getUserById,
+    postUser,
+    deleteUser,
+    putUser};

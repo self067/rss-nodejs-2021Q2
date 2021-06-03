@@ -1,9 +1,23 @@
 import { v4 as uuidv4 } from 'uuid';
+
+export interface IUser {
+  id: string;
+  name: string;
+  login: string;
+}
 /**
  * User data model
  * @class
  */
-class User {
+class User implements IUser {
+  id: string;
+
+  login: string;
+
+  name: string;
+
+  password: string;
+
   /**
    * @constructor
    * @param  {string} id User Id
@@ -16,7 +30,7 @@ class User {
     name = 'USER',
     login = 'user',
     password = 'P@55w0rd',
-  } = {}) {
+  }: User) {
     this.id = id;
     this.name = name;
     this.login = login;
@@ -28,8 +42,9 @@ class User {
    * @param  {object} user object
    * @return {object}
    */
-  static toResponse(user) {
+  static toResponse(user: User): IUser {
     const { id, name, login } = user;
+
     return { id, name, login };
   }
 }

@@ -2,66 +2,73 @@
  * Users data
  * @namespace Users/Repository
  */
+import User from './user.model';
 
 /**
  * User array
  * @memberof Users/Repository
  */
-const users = [];
-
+const users: User[] = [];
 /**
  * Get all Users
  * @memberof Users/Repository
- * @return {user[]}
+ * @return {User[]}
  */
-const getAll = async () => users;
-
+const getAll = (): User[] => users;
 /**
  * Get User by Id
  * @memberof Users/Repository
  * @param  {string} id User id
- * @returns {User}
+ * @returns {User | undefined}
  */
-const getUserById = async (id) => users.find((item) => item.id === id);
 
+const getUserById = (id: string): User | undefined =>
+  users.find((item: User) => item.id === id);
 /**
  * Create user
  * @memberof Users/Repository
  * @param  {User} user  User object {name,login, password}
  * @returns {User}
  */
-const postUser = async ({ id, name, login, password }) => {
+const postUser = ({ id, name, login, password }: User): User => {
   users.push({ id, name, login, password });
+
   return { id, name, login, password };
 };
-
 /**
  * Delete user
  * @memberof User/Repository
  * @param {string} id User Id
  * @return {boolean}
  */
-const deleteUser = async (id) => {
+const deleteUser = (id: string): boolean => {
   const index = users.findIndex((item) => item.id === id);
-  if (index === -1) return false;
+
+  if (index === -1) {
+    return false;
+  }
   users.splice(index, 1);
+
   return true;
 };
-
 /**
  * Update user
  * @memberof User/Repository
  * @param {User} user board
  * @returns {User}
  */
-const putUser = async ({ id, name, login, password }) => {
+const putUser = ({ id, name, login, password }: User): User | null => {
   const index = users.findIndex((item) => item.id === id);
+  const user = users[index];
+  if (index === -1 || !user) {
+    return null;
+  }
 
-  if (index === -1) return null;
-  users[index].name = name;
-  users[index].login = login;
-  users[index].password = password;
-  return { ...users[index] };
+  user.name = name;
+  user.login = login;
+  user.password = password;
+
+  return { ...user };
 };
 
-module.exports = { getAll, postUser, getUserById, deleteUser, putUser };
+export default { getAll, postUser, getUserById, deleteUser, putUser };
