@@ -1,4 +1,4 @@
-import express from 'express';
+import express, { Response, Request, NextFunction } from 'express';
 import swaggerUI from 'swagger-ui-express';
 import path from 'path';
 import YAML from 'yamljs';
@@ -8,6 +8,7 @@ import boardRouter from './resources/boards/board.router';
 import taskRouter from './resources/tasks/task.router';
 import fs from 'fs';
 import morgan from 'morgan';
+import { handleError } from './handleerror';
 
 const app = express();
 const swaggerDocument = YAML.load(path.join(__dirname, '../doc/api.yaml'));
@@ -20,7 +21,7 @@ app.use(
 
 app.use(
   morgan(':date[iso] :method :url :req[header] :status - :response-time ms', {
-    stream: fs.createWriteStream('access.log', {
+    stream: fs.createWriteStream('logs/access.log', {
       flags: 'a',
     }),
   })
@@ -38,19 +39,24 @@ app.use('/', (req, res, _next) => {
   return;
 });
 
+app.use((error: Error, _req: Request, res: Response, _next: NextFunction) => {
+  const msg = 'Internal Server Error';
+  handleError(`${error.message}. ${msg}`);
+  res.status(500).send(msg);
+});
+
 process
-  .on('unhandledRejection', (reason, p) => {
-    console.error(reason, 'Unhandled Rejection at Promise', p);
+  .on('unhandledRejection', (reason, _p) => {
+    handleError(reason + ' Unhandled Rejection at Promise');
     process.exit(3);
   })
   .on('uncaughtException', (err) => {
-    console.error(err.message, 'Uncaught Exception thrown');
+    handleError(err.message + ' Uncaught Exception thrown');
     process.exit(1);
   });
 
 // 3
-//throw Error('Oops!');
-
+// throw Error('Oops!');
 // 4
 //Promise.reject(Error('Oops!'));
 

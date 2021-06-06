@@ -1,0 +1,5 @@
+Sun Jun 06 2021 19:44:04 GMT+0300 (Москва, стандартное время) message 
+Sun Jun 06 2021 19:46:24 GMT+0300 (Москва, стандартное время) Oops! Uncaught Exception thrown 
+Sun Jun 06 2021 19:48:41 GMT+0300 (Москва, стандартное время) Error: Oops! Unhandled Rejection at Promise[object Promise] 
+Sun Jun 06 2021 20:48:51 GMT+0300 (Москва, стандартное время)  Unhandled Rejection at Promise 
+Sun Jun 06 2021 20:49:51 GMT+0300 (Москва, стандартное время) Error: Oops! Unhandled Rejection at Promise 
