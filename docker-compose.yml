@@ -1,8 +1,8 @@
 version: '3.4'
 
 services:
-  rsrestservicestarter:
-    image: rsrestservicestarter
+  node:
+    image: rss-node-2021q2-task6
     build:
       context: .
       dockerfile: ./Dockerfile
@@ -10,3 +10,13 @@ services:
       NODE_ENV: production
     ports:
       - 4000:4000
+  postgres:
+    image: rss-node-2021q2-task6-postgres
+    build:
+      context: .
+      dockerfile: ./postgres/Dockerfile
+    environment:
+      NODE_ENV: production
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - 5434:5432
