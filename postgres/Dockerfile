@@ -1,1 +1,3 @@
 FROM postgres
+ENV POSTGRES_PASSWORD=postgres
+
