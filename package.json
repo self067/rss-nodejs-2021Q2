@@ -20,10 +20,10 @@
     "test": "cross-env  DEBUG=rs:* jest --testMatch \"<rootDir>/test/e2e/test/*.test.js\" --noStackTrace --runInBand",
     "test:auth": "cross-env DEBUG=rs:* TEST_MODE=auth jest --noStackTrace",
     "doc": ".\\node_modules\\.bin\\tsc && jsdoc -r build/",
-    "noderun": "docker run -i  -p 4000:4000/tcp seltor/rss-node-2021q2-task6:latest",
-    "pgrun": "docker run -i  -p 5432:5432/tcp seltor/rss-node-2021q2-task6-postgres:latest",
-    "dnbuild": "docker build . -t seltor/rss-node-2021q2-task6",
-    "dbbuild": "docker build ./postgres -t seltor/rss-node-2021q2-task6-postgres"
+    "noderun": "docker run -i  -p 4000:4000/tcp seltor/rss-node-2021q2:latest",
+    "pgrun": "docker run -i  -p 5432:5432/tcp seltor/rss-node-2021q2-postgres:latest",
+    "dnbuild": "docker build . -t seltor/rss-node-2021q2",
+    "dbbuild": "docker build ./postgres -t seltor/rss-node-2021q2-postgres"
   },
   "keywords": [
     "rs",

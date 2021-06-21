@@ -2,7 +2,7 @@ version: '3.4'
 
 services:
   node:
-    image: rss-node-2021q2-task6
+    image: rss-node-2021q2
     build:
       context: .
       dockerfile: ./Dockerfile
@@ -11,7 +11,7 @@ services:
     ports:
       - 4000:4000
   postgres:
-    image: rss-node-2021q2-task6-postgres
+    image: rss-node-2021q2-postgres
     build:
       context: .
       dockerfile: ./postgres/Dockerfile
